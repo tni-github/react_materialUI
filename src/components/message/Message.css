@@ -1,0 +1,59 @@
+.message {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    color: #fff;
+    width: 220px;
+    min-height: 50px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.message span {
+    display: block;
+}
+
+.message:last-child {
+    margin: 0;
+}
+
+.user {
+    background-color: rgb(46, 126, 115);
+    color: #fff;
+    position: relative;
+    /* margin-left: auto; */
+}
+
+.user::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(46, 126, 115);
+    position: absolute;
+    top: 10px;
+    right: -20px;
+}
+
+.bot {
+    background-color: rgb(63, 64, 156);
+    color: #fff;
+    position: relative;
+    /* margin-left: 0; */
+}
+
+.bot::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgb(63, 64, 156) transparent transparent;
+    position: absolute;
+    top: 10px;
+    left: -20px;
+}
