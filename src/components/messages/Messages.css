@@ -1,0 +1,13 @@
+.messages {
+    min-width: 65vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.messages>.message.user {
+    margin-left: auto;
+}
+
+.messages>.message.bot {
+    margin-left: 0;
+}
