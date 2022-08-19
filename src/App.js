@@ -44,7 +44,7 @@ function App() {
               <Chats />
             </Route>
 
-            <Route path="/chats/:chatId">
+            <Route exact path="/chats/:chatId">
               <div>чат</div>
             </Route>
 
