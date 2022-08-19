@@ -1,72 +1,60 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import { Messages } from './components/messages/Messages';
-import { Form } from './components/form/Form';
-import { AUTHOR, BOT } from './constants/constants';
-import CssBaseline from '@mui/material/CssBaseline';
-import { List, ListItem } from '@mui/material';
 
-let timer;
+import './App.css';
+/* import { Messages } from './components/messages/Messages';
+import { Form } from './components/form/Form'; */
+/* import { AUTHOR, BOT } from './constants/constants'; */
+/* import CssBaseline from '@mui/material/CssBaseline';
+import { List, ListItem } from '@mui/material'; */
+import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Homepage } from './pages/homepage.jsx';
+import { Profile } from './pages/profile.jsx';
+import { Chats } from './pages/chats.jsx';
+
 
 function App() {
-  const [messageList, setMessageList] = useState([]);
 
-  const [chats, setChats] = useState([{ name: '', id: '' }])
+  /* const [chats, setChats] = useState([]); */
 
-  useEffect(() => {
-    timer = setTimeout(() => {
-      if (messageList[messageList.length - 1]?.author === AUTHOR) {
-        clearTimeout(timer);
+  /* useEffect(() => {
+    setChats()
+  }, []); */
 
-        setMessageList((prevMessageList) => ([
-          ...prevMessageList,
-          {
-            author: BOT,
-            text: "Здравствуйте, я БОТ. Могу чем-то помочь?",
-            id: prevMessageList.length
-          }
-        ]))
-      }
-    }, 1500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-
-  }, [messageList]);
-
-  const handleSendMessage = (msg) => {
-    setMessageList((prevMessageList) => ([
-      ...prevMessageList,
-      {
-        author: AUTHOR,
-        text: msg,
-        id: prevMessageList.length
-      }
-    ]));
-  }
 
   return (
     <div className="App">
-      <CssBaseline />
-      <div className="container">
-        <div className="message__list">
-          <List
-            sx={{ width: '100%', minHeight: 'calc(100vh - 117px)', bgcolor: '#fff', padding: '10px' }}
-            chats={chats}>
-            {(chat) => (
-              <ListItem sx={{
-                fontSize: '14px'
-              }}
-                alignItems="left"
-                {...chat}>
-              </ListItem>
-            )}
-          </List>
-          <Messages messageList={messageList} />
-        </div>
-      </div>
-      <Form onSendMessage={handleSendMessage} />
+      <BrowserRouter>
+        <header className="header">
+          <Link to="/" className="main-link">Homepage</Link>
+          <Link to="/profile" className="main-link">Profile</Link>
+          <Link to="/chats" className="main-link">Chats</Link>
+        </header>
+
+        <main>
+          <Switch>
+
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+
+            <Route path="/profile">
+              <Profile />
+            </Route>
+
+            <Route exact path="/chats">
+              <Chats />
+            </Route>
+
+            <Route path="/chats/:chatId">
+              <div>чат</div>
+            </Route>
+
+            <Route>
+              <h2 className="nopage">Page not found</h2>
+            </Route>
+
+          </Switch>
+        </main>
+      </BrowserRouter>
     </div>
   );
 }

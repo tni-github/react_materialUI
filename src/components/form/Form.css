@@ -1,6 +1,6 @@
 .form {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 10fr 2fr;
     grid-column-gap: 10px;
     justify-content: center;
     padding: 10px;
@@ -29,6 +29,10 @@
 
 .MuiTextField-root fieldset {
     border: none;
+}
+
+.css-sddv88-MuiButtonBase-root-MuiButton-root:active {
+    box-shadow: none !important;
 }
 
 /* .form__input:focus {

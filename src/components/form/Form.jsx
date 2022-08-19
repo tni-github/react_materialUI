@@ -5,9 +5,9 @@ import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
 
 
-export const Form = ({ onSendMessage }) => {
+export const Form = ({ onSendMessage, messageList }) => {
     const [message, setMessage] = useState('');
-    const autoFocus = useRef(true);
+    const autoFocus = useRef("true");
 
     const handleChange = (event) => {
         setMessage(event.target.value);
@@ -24,8 +24,7 @@ export const Form = ({ onSendMessage }) => {
                 sx={
                     {
                         backgroundColor: '#fff',
-                        height: '100%',
-                        width: '100%',
+
                         boxSizing: 'border-box',
                         padding: '8px',
                         borderRadius: '10px',
@@ -37,13 +36,11 @@ export const Form = ({ onSendMessage }) => {
                 value={message}
                 onChange={handleChange}
                 inputRef={autoFocus}
-                autoFocus="true"
             />
             <Stack spacing={2} direction="row">
                 <Button
                     sx={{
-                        height: '100%',
-                        width: '100%',
+
                         border: '1px solid rgb(68, 28, 143)',
                         borderRadius: '10px',
                         padding: '6px',

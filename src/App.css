@@ -5,6 +5,12 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+}
+
+.App__homepage {
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -13,7 +19,63 @@
 
 .message__list {
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 3fr 9fr;
   grid-column-gap: 10px;
-  margin: 10px 0 0 10px;
+  margin: 10px 20px 0 10px;
+  min-height: calc(100vh - 180px);
+}
+
+.chatlist {
+  background-color: #fff;
+  padding: 5px;
+  height: 100%;
+  text-align: left;
+}
+
+.nopage {
+  color: #fff;
+}
+
+.header {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #6f6f72;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-link {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 0;
+  line-height: 100%;
+}
+
+.main-link:hover {
+  color: rgb(63, 64, 156);
+  border: 1px solid rgb(63, 64, 156);
+  background-color: #fff;
+
+}
+
+.main-link:active {
+  color: rgb(26, 9, 73);
+  border: 1px solid rgb(26, 9, 73);
+  background-color: rgb(179, 193, 223);
+}
+
+.profile {
+  color: #fff;
+  padding: 15px;
+}
+
+.chatlist {
+  background-color: #fff;
 }
