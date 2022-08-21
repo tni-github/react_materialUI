@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { Chat } from './chat';
 
 const initialChats = [
@@ -18,8 +17,6 @@ const initialChats = [
 ];
 
 export const Chats = () => {
-    const { chatId } = useParams();
-
     const [chats, setChats] = useState(initialChats);
 
     return (

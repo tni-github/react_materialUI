@@ -9,6 +9,8 @@ import { Link, BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Homepage } from './pages/homepage.jsx';
 import { Profile } from './pages/profile.jsx';
 import { Chats } from './pages/chats.jsx';
+import { store } from './redux/store/store';
+import { Provider } from 'react-redux';
 
 
 function App() {
@@ -21,41 +23,47 @@ function App() {
 
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <header className="header">
-          <Link to="/" className="main-link">Homepage</Link>
-          <Link to="/profile" className="main-link">Profile</Link>
-          <Link to="/chats" className="main-link">Chats</Link>
-        </header>
+    <Provider store={store}>
 
-        <main>
-          <Switch>
+      <div className="App">
 
-            <Route exact path="/">
-              <Homepage />
-            </Route>
+        <BrowserRouter>
+          <header className="header">
+            <Link to="/" className="main-link">Homepage</Link>
+            <Link to="/profile" className="main-link">Profile</Link>
+            <Link to="/chats" className="main-link">Chats</Link>
+          </header>
 
-            <Route path="/profile">
-              <Profile />
-            </Route>
+          <main>
+            <Switch>
 
-            <Route exact path="/chats">
-              <Chats />
-            </Route>
+              <Route exact path="/">
+                <Homepage />
+              </Route>
 
-            <Route exact path="/chats/:chatId">
-              <div>чат</div>
-            </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
 
-            <Route>
-              <h2 className="nopage">Page not found</h2>
-            </Route>
+              <Route exact path="/chats">
+                <Chats />
+              </Route>
 
-          </Switch>
-        </main>
-      </BrowserRouter>
-    </div>
+              <Route exact path="/chats/:chatId">
+                <div>чат</div>
+              </Route>
+
+              <Route>
+                <h2 className="nopage">Page not found</h2>
+              </Route>
+
+            </Switch>
+          </main>
+        </BrowserRouter>
+
+      </div>
+
+    </Provider>
   );
 }
 

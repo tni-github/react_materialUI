@@ -22,7 +22,7 @@
   grid-template-columns: 3fr 9fr;
   grid-column-gap: 10px;
   margin: 10px 20px 0 10px;
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 185px);
 }
 
 .chatlist {
@@ -74,6 +74,26 @@
 .profile {
   color: #fff;
   padding: 15px;
+}
+
+.profile input {
+  margin: 10px;
+  transform: scale(1.2);
+}
+
+.profile span {
+  font-size: 14px;
+  display: inline-block;
+  margin: 5px 0;
+}
+
+.profile div {
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: rgb(26, 9, 73);
+  width: max-content;
+  background-color: rgb(179, 193, 223);
 }
 
 .chatlist {

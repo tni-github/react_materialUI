@@ -49,18 +49,6 @@ const Homepage = () => {
             <CssBaseline />
             <div className="container">
                 <div className="message__list">
-                    {/* <List
-                        sx={{ width: '100%', minHeight: 'calc(100vh - 180px)', bgcolor: '#fff', padding: '20px 10px' }}
-                        chats={chats}>
-                        {(chat) => (
-                            <ListItem sx={{
-                                fontSize: '14px'
-                            }}
-                                alignItems="left"
-                                {...chat}>
-                            </ListItem>
-                        )}
-                    </List> */}
                     <div className="chatlist"><Chats /></div>
                     <Messages messageList={messageList} />
                 </div>
