@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Chat } from './chat';
 
 const initialChats = [
@@ -18,6 +18,10 @@ const initialChats = [
 
 export const Chats = () => {
     const [chats, setChats] = useState(initialChats);
+
+    useEffect(() => {
+        setChats(chats)
+    }, [chats]);
 
     return (
         <div className="chatlist">

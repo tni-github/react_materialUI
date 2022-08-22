@@ -1,27 +1,31 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { nameOpen } from '../redux/actions/profile-actions';
+import { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeName } from '../redux/actions/profile/profile-actions';
 
 const Profile = () => {
 
-    const showName = useSelector((state) => state.showName);
-    const name = useSelector((state) => state.name);
     const dispatch = useDispatch();
+    const [value, setValue] = useState('');
 
-    const toggleShowName = () => {
-        dispatch(nameOpen());
-    };
+    const setName = useCallback(() => {
+        dispatch(changeName(value));
+    }, [dispatch, value]);
+
+    const handleChange = useCallback((e) => {
+        setValue(e.target.value);
+    }, []);
 
     return (
         <div className="profile">
             <h3>Profile</h3>
             <input
-                type="checkbox"
-                checked={showName}
-                value={showName}
-                onChange={toggleShowName}
+                type="text"
+                value={value}
+                onChange={handleChange}
             />
-            <span>Show Name</span>
-            {showName && <div> {name} </div>}
+            <div>
+                <button onClick={setName}>Change Name</button>
+            </div>
         </div>
     );
 }

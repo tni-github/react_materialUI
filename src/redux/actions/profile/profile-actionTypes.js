@@ -1,0 +1,2 @@
+export const NAME_ACTION = 'NAME_ACTION';
+export const CHANGE_NAME = 'PROFILE::CHANGE_NAME';

@@ -1,1 +1,0 @@
-export const NAME_ACTION = 'NAME_ACTION';
