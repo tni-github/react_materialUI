@@ -1,18 +1,27 @@
 import { ADD_CHAT } from "../actions/chats/chat-actions";
 
-const initialState = {
-    chatList: []
-};
+const initialChats = [
+    {
+        chatId: "1",
+        name: "Chat 1",
+        messages: [{ text: "First Message", author: "user" }, { text: "Hello", author: "bot" }]
+    },
 
-export const chatsReducer = (state = initialState, action) => {
+    {
+        chatId: "2",
+        name: "Chat 2",
+        messages: [{ text: "One More Message", author: "user" }, { text: "Hello", author: "bot" }]
+    }
+];
+
+export const chatsReducer = (state = initialChats, action) => {
+
     switch (action.type) {
         case ADD_CHAT:
-            return {
+            return [
                 ...state,
-                chatList: { ...state.chatList },
-                id: `id ${state.chatList.length}`,
-                name: action.name
-            }
+                action.chat
+            ]
         default:
             return state;
     }

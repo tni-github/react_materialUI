@@ -1,15 +1,17 @@
 import { Form } from '../components/form/Form';
 import CssBaseline from '@mui/material/CssBaseline';
-/* import { List, ListItem } from '@mui/material'; */
 import { Messages } from '../components/messages/Messages';
 import { AUTHOR, BOT } from '../constants/constants.js';
 import { useEffect, useState } from 'react';
 import { Chats } from './chats';
+import { useSelector } from 'react-redux';
+import { getChats } from '../redux/selectors/getChats-selector';
 
 let timer;
 
 const Homepage = () => {
     const [messageList, setMessageList] = useState([]);
+    const chats = useSelector(getChats);
 
     useEffect(() => {
         timer = setTimeout(() => {
@@ -49,7 +51,9 @@ const Homepage = () => {
             <CssBaseline />
             <div className="container">
                 <div className="message__list">
-                    <div className="chatlist"><Chats /></div>
+                    <div className="chatlist">
+                        <Chats chats={chats} messageList={messageList} />
+                    </div>
                     <Messages messageList={messageList} />
                 </div>
             </div>

@@ -1,35 +1,41 @@
 
-import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useState, useCallback } from 'react';
 import { Chat } from './chat';
+import { addChat } from '../redux/actions/chats/chat-actions';
 
-const initialChats = [
-    {
-        chatId: "1",
-        name: "Chat 1",
-        messages: [{ text: "First Message", author: "user" }, { text: "Hello", author: "bot" }]
-    },
+export const Chats = ({ chats }) => {
 
-    {
-        chatId: "2",
-        name: "Chat 2",
-        messages: [{ text: "One More Message", author: "user" }, { text: "Hello", author: "bot" }]
+    const dispatch = useDispatch();
+
+    const handleAddChat = () => {
+        dispatch(addChat(value));
     }
-];
 
-export const Chats = () => {
-    const [chats, setChats] = useState(initialChats);
+    const [value, setValue] = useState('');
 
-    useEffect(() => {
-        setChats(chats)
-    }, [chats]);
+    const handleChange = useCallback((e) => {
+        setValue(e.target.value);
+    }, []);
 
     return (
-        <div className="chatlist">
-            {chats.map((chat) => {
-                return <Chat key={chat.chatId} chat={chat} />
-            })
-            }
-        </div>
+        <div className="chatlist__wrapper">
+
+            <label>Для добавления чата введите его имя в окне ниже <span>(иначе кнопка добавления будет неактивна)</span>:</label>
+            <input type="text"
+                value={value}
+                onChange={handleChange}>
+            </input>
+
+            <button onClick={handleAddChat} disabled={!value}>Добавить чат</button>
+            <div className="chatlist__items">
+                {
+                    chats.map((chat) => {
+                        return <Chat key={chat.chatId} {...chat} />
+                    })
+                }
+            </div>
+        </div >
     )
 }
 

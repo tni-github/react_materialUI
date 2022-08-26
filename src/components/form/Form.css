@@ -1,48 +1,47 @@
 .form {
     display: grid;
-    grid-template-columns: 10fr 2fr;
+    grid-template-columns: 18fr 2.5fr;
     grid-column-gap: 10px;
     justify-content: center;
     padding: 10px;
-    height: max-content;
+    height: 100%;
     margin-bottom: 5px;
 }
 
-/* .form__input {
-    height: 50px;
-    width: 100%;
+.form button {
+    white-space: nowrap;
+    outline: none;
+    height: 72px;
+    background-color: rgb(117, 151, 223);
+    border: 1px solid transparent;
     box-sizing: border-box;
-    padding: 8px;
-    border-radius: 10px;
-    background-color: #fff;
-} */
-
-.Mui-focused .MuiOutlinedInput-notchedOutline {
-    /* border: 5px solid #9767c7; */
-    border: none !important;
-    outline: none !important;
+    transition: background-color 1s ease-in-out;
+    box-shadow: none;
 }
 
-.MuiTextField-root .Mui-focused {
-    border: 3px solid #1e0ce8;
+.form button:hover {
+    background-color: rgb(51, 99, 204);
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.form button:active {
+    background-color: rgb(6, 31, 83);
+    color: #fff;
+    height: 100%;
+    box-shadow: none;
+}
+
+.form input {
+    padding: auto;
+}
+
+.form input:focus {
+    border: 3px solid rgb(51, 99, 204);
+    box-sizing: border-box;
+    height: 100%;
 }
 
 .MuiTextField-root fieldset {
     border: none;
 }
-
-.css-sddv88-MuiButtonBase-root-MuiButton-root:active {
-    box-shadow: none !important;
-}
-
-/* .form__input:focus {
-    outline: 3px solid #986db3;
-    border-color: transparent;
-} */
-
-/* .form__btn {
-    height: 50px;
-    border: 1px solid rgb(68, 28, 143);
-    border-radius: 10px;
-    box-sizing: border-box;
-} */

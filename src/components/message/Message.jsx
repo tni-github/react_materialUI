@@ -1,9 +1,10 @@
 import './Message.css';
 import { AUTHOR, BOT } from '../../constants/constants';
 import { useSelector } from 'react-redux';
+import { getProfileName } from '../../redux/selectors/getProfileName-selector';
 
 export const Message = ({ author, text }) => {
-    const profileName = useSelector((state) => state.name);
+    const profileName = useSelector(getProfileName);
     const authorType = author === AUTHOR ? profileName : BOT;
 
     return (

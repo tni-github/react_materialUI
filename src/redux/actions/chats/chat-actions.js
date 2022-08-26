@@ -1,6 +1,10 @@
-export const ADD_CHAT = "CHATS::ADD_CHAT";
+export const ADD_CHAT = "ADD_CHAT";
 
-export const addChat = (name) => ({
+export const addChat = (name, messageList) => ({
     type: ADD_CHAT,
-    name
+    chat: {
+        chatId: Date.now(),
+        name,
+        messages: [{ ...messageList }]
+    }
 });

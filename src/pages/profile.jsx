@@ -9,6 +9,7 @@ const Profile = () => {
 
     const setName = useCallback(() => {
         dispatch(changeName(value));
+        setValue('');
     }, [dispatch, value]);
 
     const handleChange = useCallback((e) => {
@@ -22,9 +23,10 @@ const Profile = () => {
                 type="text"
                 value={value}
                 onChange={handleChange}
+                placeholder="Введите имя, иначе кнопка будет неактивна"
             />
             <div>
-                <button onClick={setName}>Change Name</button>
+                <button onClick={setName} disabled={!value}>Change Name</button>
             </div>
         </div>
     );

@@ -1,10 +1,6 @@
 import { ADD_MESSAGE } from "../actions/messages/messagees-actions";
 
-const initialState = {
-    messageList: {}
-};
-
-export const messagesReducer = (state = initialState, action) => {
+export const messagesReducer = (state = {}, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             const currentList = state.messageList[action.chatId] || [];
