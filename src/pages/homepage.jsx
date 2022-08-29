@@ -1,39 +1,21 @@
 import { Form } from '../components/form/Form';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Messages } from '../components/messages/Messages';
-import { AUTHOR, BOT } from '../constants/constants.js';
-import { useEffect, useState } from 'react';
+import { AUTHOR } from '../constants/constants.js';
+import { useCallback, useState } from 'react';
 import { Chats } from './chats';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getChats } from '../redux/selectors/getChats-selector';
-
-let timer;
+import { addMessageWithThunk } from '../redux/actions/messages/messagees-actions';
 
 const Homepage = () => {
     const [messageList, setMessageList] = useState([]);
     const chats = useSelector(getChats);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        timer = setTimeout(() => {
-            if (messageList[messageList.length - 1]?.author === AUTHOR) {
-                clearTimeout(timer);
-
-                setMessageList((prevMessageList) => ([
-                    ...prevMessageList,
-                    {
-                        author: BOT,
-                        text: "Здравствуйте, я БОТ. Могу чем-то помочь?",
-                        id: prevMessageList.length
-                    }
-                ]))
-            }
-        }, 1500);
-
-        return () => {
-            clearTimeout(timer);
-        };
-
-    }, [messageList]);
+    const onAddMessage = useCallback((chatId, message) => {
+        dispatch(addMessageWithThunk(chatId, message));
+    }, [dispatch])
 
     const handleSendMessage = (msg) => {
         setMessageList((prevMessageList) => ([

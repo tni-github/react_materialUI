@@ -11,6 +11,6 @@ export const Message = ({ author, text }) => {
         <div className={`message ${author}`}>
             <span>{authorType}: </span>
             <span>{text}</span>
-        </div>
+        </div >
     )
 }
